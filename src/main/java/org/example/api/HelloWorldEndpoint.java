@@ -24,7 +24,7 @@ public class HelloWorldEndpoint {
     this.componentClient = componentClient;
   }
 
-  @Get("/hello")
+  @Get("/ping")
   public String helloWorld() {
     return componentClient
         .forAgent()

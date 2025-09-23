@@ -4,7 +4,7 @@ import akka.javasdk.agent.Agent;
 import akka.javasdk.annotations.ComponentId;
 
 @ComponentId("hello-world-agent")
-public class HelloWorldAgent extends Agent {
+public class  HelloWorldAgent extends Agent {
 
  private static final String SYSTEM_MESSAGE =
      """
