@@ -1,15 +1,55 @@
 services:
-  akka-app:
+  akka-node1:
     image: akka-accounting-system-service:latest
-    container_name: akka-app
+    container_name: akka-node1
+    hostname: akka-node1
     depends_on:
       - postgres
     ports:
-      - "9000:9000"
+      - "9000:9000" # expose only node1 to host
     environment:
-      - POSTGRES_USER=akkauser
-      - POSTGRES_PASSWORD=akkapass
-      - POSTGRES_DB=akkadb
+      - AKKA_HOST=akka-node1
+      - AKKA_PORT=2551
+      - MANAGEMENT_PORT=9000
+      - DB_USER=akkauser
+      - DB_PASSWORD=akkapass
+      - DB_DATABASE=akkadb
+      - DB_HOST=postgres
+      - DB_PORT=5432
+    networks:
+      - akka-network
+
+  akka-node2:
+    image: akka-accounting-system-service:latest
+    container_name: akka-node2
+    hostname: akka-node2
+    depends_on:
+      - postgres
+    environment:
+      - AKKA_HOST=akka-node2
+      - AKKA_PORT=2552
+      - MANAGEMENT_PORT=9000
+      - DB_USER=akkauser
+      - DB_PASSWORD=akkapass
+      - DB_DATABASE=akkadb
+      - DB_HOST=postgres
+      - DB_PORT=5432
+    networks:
+      - akka-network
+
+  akka-node3:
+    image: akka-accounting-system-service:latest
+    container_name: akka-node3
+    hostname: akka-node3
+    depends_on:
+      - postgres
+    environment:
+      - AKKA_HOST=akka-node3
+      - AKKA_PORT=2553
+      - MANAGEMENT_PORT=9000
+      - DB_USER=akkauser
+      - DB_PASSWORD=akkapass
+      - DB_DATABASE=akkadb
       - DB_HOST=postgres
       - DB_PORT=5432
     networks:
