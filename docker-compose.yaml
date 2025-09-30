@@ -1,0 +1,33 @@
+services:
+  akka-app:
+    image: akka-accounting-system-service:latest
+    container_name: akka-app
+    depends_on:
+      - postgres
+    ports:
+      - "9000:9000"
+    environment:
+      - POSTGRES_USER=akkauser
+      - POSTGRES_PASSWORD=akkapass
+      - POSTGRES_DB=akkadb
+      - DB_HOST=postgres
+      - DB_PORT=5432
+    networks:
+      - akka-network
+
+  postgres:
+    image: postgres:15
+    container_name: akka-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=akkauser
+      - POSTGRES_PASSWORD=akkapass
+      - POSTGRES_DB=akkadb
+    ports:
+      - "5432:5432"
+    networks:
+      - akka-network
+
+networks:
+  akka-network:
+    driver: bridge
