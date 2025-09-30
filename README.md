@@ -48,7 +48,8 @@ You can use the [Akka Console](https://console.akka.io) to create a project and 
 Build container image:
 
 ```shell
-mvn clean install -DskipTests
+mvn clean install -DskipTests -Pstandalone
+docker run akka-accounting-system-service:latest -p 9000:9000
 ```
 
 Install the `akka` CLI as documented in [Install Akka CLI](https://doc.akka.io/reference/cli/index.html).

@@ -25,8 +25,7 @@ public class  HelloWorldAgent extends Agent {
 
   public Effect<String> greet(String userGreeting) {
     if (System.getenv("OPENAI_API_KEY") == null || System.getenv("OPENAI_API_KEY").isEmpty()) {
-      return effects()
-          .reply("I have no idea how to respond, someone didn't give me an API key");
+      return effects().reply("I have no idea how to respond, someone didn't give me an API key");
     }
 
     return effects()

@@ -13,11 +13,5 @@
   <packaging>jar</packaging>
 
   <name>akka-accounting-system-service</name>
-
-  <properties>
-  </properties>
-
-  <dependencies>
-    <!-- Your dependencies go here -->
-  </dependencies>
+  
 </project>
